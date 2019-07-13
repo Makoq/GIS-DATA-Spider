@@ -1,23 +1,16 @@
-const mongodb=require("mongodb").MongoClient;
-const url="mongodb://localhost:27017";
-const dbName="nodeSpider";
-const client=new mongodb(url,{useNewUrlParser:true});
-
-client.connect(function(err){
-    console.log("connected successful")
-
+const config=require("../config/default")
+const mongoose=require("mongoose");
  
-    
-})
+mongoose.connect(config.mongodb,{useNewUrlParser: true})
 
-const insertDoc=function(db,arr,callback){
-    const coll=db.collection("testInsert2")
+var db = mongoose.connection;
 
-    coll.insertMany(arr,function(err,res){
-        
-        callback(res)
-    })
-    console.log("insert successful")
-}
+db.on('error', console.error.bind(console, 'connection error:'));
 
- 
+db.once('open', function() {
+  // we're connected!
+  console.log("connected");
+  
+});
+
+module.exports=mongoose;

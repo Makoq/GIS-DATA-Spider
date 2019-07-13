@@ -1,4 +1,4 @@
- var re=require('./src/controller/arcgisHub.js')
+ var re=require('./src/controller/dataCreate')
 
 var post_data={
     "fields": {
@@ -19,9 +19,8 @@ var post_data={
 
 var path="/api/v3/datasets?page[size]=10&page[number]="
 
-    for(let i=1;i<500;i++){
-    re.arcgishub(post_data,path+i)
+    for(let i=1;i<=1000;i++){
+        re.arcgishub(post_data,path+i)
 
-
-}
+    }
 
