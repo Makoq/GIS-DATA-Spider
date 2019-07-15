@@ -8,7 +8,7 @@ var create=function(obj){
         if(err){
             console.log("Error:"+err)
         }else{
-            console.log("ok")
+            // console.log("")
         }
 
     })
